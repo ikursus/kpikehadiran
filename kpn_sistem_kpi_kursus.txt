@@ -1,0 +1,80 @@
+
+
+Tajuk: Sistem KPI Kursus
+
+Penerangan: Sistem untuk menyimpan rekod jumlah kehadiran kursus
+bagi kakitangan jabatan kementerian.
+
+Keperluan: 
+
+1) Simpan rekod kakitangan
+2) Simpan rekod maklumat kursus & kategori
+3) Simpan rekod kehadiran kakitangan
+4) KPI kehadiran adalah minima 7 hari.
+5) Hantar reminder setiap suku tahun jika KPI belum dicapai.
+6) Statistik / Laporan.
+7) Fungsi pengesahan pegawai.
+
+
+---------------------------------------------
+
+Keperluan Halaman
+
+1) Bahagian pelawat / guest
+- Halaman utama
+	- uri = /
+	- view = /resources/views/welcome.blade.php
+	
+- Halaman login 
+	- uri = /login
+	- view = /resources/views/auth/login.blade.php
+
+
+2) Halaman kakitangan
+
+- Halaman Dashboard 
+	- uri = /dashboard
+	- view = /resources/views/user/dashboard.blade.php
+
+
+- Halaman Rekod kursus yang pernah dihadiri
+	- uri = /kursus
+	- view = /resources/views/user/kursus/senarai.blade.php
+	
+- Halaman Tambah rekod penyertaan kursus dan kehadiran
+	- uri = /kursus/baru
+	- view = /resources/views/user/kursus/baru.blade.php
+
+- Laporan
+	- uri = /laporan
+	- view = /resources/views/user/laporan/senarai.blade.php
+
+- Profile
+	- uri = /profile
+	- view = /resources/views/user/profile.blade.php
+
+
+3) Halaman pengurusan/admin
+- Dashboard
+- Senarai rekod kakitangan
+- Tambah rekod kakitangan
+- Senarai KPI belum capai
+- Senarai KPI sudah capai
+- Laporan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
