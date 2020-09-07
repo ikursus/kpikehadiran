@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('webrasmi') }}" target="_blank">Laman Rasmi Kementerian Perpaduan Negara</a>
+                    
                 </div>
             </div>
         </div>

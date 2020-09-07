@@ -17,20 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function() {
-    return 'Selamat Datang Ke Halaman Login';
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/dashboard', function () {
+    return view('user.dashboard');
 });
 
-Route::redirect('/official/1/status/draft', 'https://www.perpaduan.gov.my/')->name('webrasmi');
-
-Route::get('/profile/{username?}', function ($username = null) {
-    
-    // Sekiranya username adalah NULL, paparkan ayat default
-    if (is_null($username))
-    {
-        return 'Tiada profile dijumpai. Sila daftar akaun';
-    }
-    // Jika tidak, paparkan nama profile
-    return 'Ini adalah profile ' . $username;
-
-})->where('username', '[A-Za-z0-9]+');;
+Route::get('/kursus', function () {
+    return view('user.kursus.senarai');
+});
