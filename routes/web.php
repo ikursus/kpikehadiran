@@ -29,14 +29,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', function () {
 
     $title = 'Halaman dashboard';
-    $name = 'Amirol';
+    $kpi_total = 3;
 
     // Cara pertama pass data
     // return view('user.dashboard', ['name' => $name]);
     // Cara kedua pass data
     // return view('user.dashboard')->with('name', $name)->with('title', $title);
     // Cara ketiga pass data
-    return view('user.dashboard', compact('name', 'title'));
+    return view('user.dashboard', compact('kpi_total', 'title'));
 });
 
 Route::get('/kursus', function () {
