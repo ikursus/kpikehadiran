@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $jumlah_hari = 7;
+    $kehadiran = 3;
+    $baki = $jumlah_hari - $kehadiran;
+
+    return view('welcome', compact('jumlah_hari', 'kehadiran', 'baki'));
 });
 
 Auth::routes();
@@ -36,4 +41,39 @@ Route::get('/dashboard', function () {
 
 Route::get('/kursus', function () {
     return view('user.kursus.senarai');
+});
+
+Route::get('/kursus/baru', function () {
+    return view('user.kursus.baru');
+});
+
+Route::post('/kursus/baru', function (Request $request) {
+    $data = $request->all();
+    return $data;
+});
+
+Route::get('/kursus/{id}/kemaskini', function () {
+    return view('user.kursus.kemaskini');
+});
+
+Route::patch('/kursus/{id}/kemaskini', function (Request $request) {
+    $data = $request->all();
+    return $data;
+});
+
+Route::delete('/kursus/{id}', function () {
+    return redirect('/kursus');
+});
+
+Route::get('/laporan', function () {
+    return view('user.laporan.senarai');
+});
+
+Route::get('/profile', function () {
+    return view('user.profile');
+});
+
+Route::patch('/profile', function (Request $request) {
+    $data = $request->all();
+    return $data;
 });
