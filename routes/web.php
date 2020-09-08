@@ -22,7 +22,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', function () {
-    return view('user.dashboard');
+
+    $title = 'Halaman dashboard';
+    $name = 'Amirol';
+
+    // Cara pertama pass data
+    // return view('user.dashboard', ['name' => $name]);
+    // Cara kedua pass data
+    // return view('user.dashboard')->with('name', $name)->with('title', $title);
+    // Cara ketiga pass data
+    return view('user.dashboard', compact('name', 'title'));
 });
 
 Route::get('/kursus', function () {

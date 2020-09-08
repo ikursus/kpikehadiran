@@ -80,27 +80,14 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    {{ env('APP_NAME') }}
-                    <hr>
-                    {{ config('app.name') }}
-                    <hr>
-                    {{ config('database.connections.mysql.charset') }}
-                </div>
+                
+                <?php
+                $name = 'ahmad';
 
-                <div>
-                    <select name="negeri">
+                i33##EEEEEEEE3``11323666666 wyhu 6j7
 
-                        @foreach(config('kpikehadiran.negeri') as $kod => $negeri)
-                        <option value="{{ $kod }}">{{ $negeri }}</option>
-                        @endforeach
+                ?>
 
-                    </select>
-                </div>
-
-                <div class="links">
-                    
-                </div>
             </div>
         </div>
     </body>
