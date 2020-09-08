@@ -46,13 +46,13 @@
 
             <div class="form-group">
                 <label for="bahagian">Bahagian</label>
-                <input type="bahagian" class="form-control">
+                <input type="text" class="form-control">
                 <small id="bahagian" class="form-text text-muted">Bahagian/Unit.</small>
             </div>
 
             <div class="form-group">
                 <label for="telefon">Telefon</label>
-                <input type="telefon" class="form-control">
+                <input type="text" class="form-control">
                 <small id="telefon" class="form-text text-muted">No telefon anda.</small>
             </div>
 
