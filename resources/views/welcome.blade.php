@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -80,13 +80,8 @@
             @endif
 
             <div class="content">
-                
-                <?php
-                $name = 'ahmad';
 
-                i33##EEEEEEEE3``11323666666 wyhu 6j7
-
-                ?>
+                <h1>{{ config('app.name') }}</h1>
 
             </div>
         </div>

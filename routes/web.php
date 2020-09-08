@@ -13,67 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-    $jumlah_hari = 7;
-    $kehadiran = 3;
-    $baki = $jumlah_hari - $kehadiran;
-
-    return view('welcome', compact('jumlah_hari', 'kehadiran', 'baki'));
-});
+Route::get('/', 'GuestController@welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', 'DashboardController@index');
 
-    $title = 'Halaman dashboard';
-    $kpi_total = 3;
+Route::get('/kursus', 'KursusController@index');
+Route::get('/kursus/baru', 'KursusController@create');
+Route::post('/kursus/baru', 'KursusController@store');
+Route::get('/kursus/{id}/kemaskini', 'KursusController@edit');
+Route::patch('/kursus/{id}/kemaskini', 'KursusController@update');
+Route::delete('/kursus/{id}', 'KursusController@destroy');
 
-    // Cara pertama pass data
-    // return view('user.dashboard', ['name' => $name]);
-    // Cara kedua pass data
-    // return view('user.dashboard')->with('name', $name)->with('title', $title);
-    // Cara ketiga pass data
-    return view('user.dashboard', compact('kpi_total', 'title'));
-});
+// Route::resource('kursus', 'KursusController');
 
-Route::get('/kursus', function () {
-    return view('user.kursus.senarai');
-});
+Route::get('/laporan', 'LaporanController@index');
 
-Route::get('/kursus/baru', function () {
-    return view('user.kursus.baru');
-});
-
-Route::post('/kursus/baru', function (Request $request) {
-    $data = $request->all();
-    return $data;
-});
-
-Route::get('/kursus/{id}/kemaskini', function () {
-    return view('user.kursus.kemaskini');
-});
-
-Route::patch('/kursus/{id}/kemaskini', function (Request $request) {
-    $data = $request->all();
-    return $data;
-});
-
-Route::delete('/kursus/{id}', function () {
-    return redirect('/kursus');
-});
-
-Route::get('/laporan', function () {
-    return view('user.laporan.senarai');
-});
-
-Route::get('/profile', function () {
-    return view('user.profile');
-});
-
-Route::patch('/profile', function (Request $request) {
-    $data = $request->all();
-    return $data;
-});
+Route::get('/profile', 'ProfileController@edit');
+Route::patch('/profile', 'ProfileController@update');
