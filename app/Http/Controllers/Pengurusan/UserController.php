@@ -41,6 +41,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            //'nama' => ['required', 'min:3']
+            'nama' => 'required|min:3',
+            'password' => ['required', 'min:5', 'confirmed']
+        ]);
+
+
         $data = $request->all();
         return $data;
     }
