@@ -99,7 +99,7 @@
                         <td>{{ $kursus['tarikh_tamat_kursus'] }}</td>
                         <td>
                             <a href="{{ route('user.kursus.edit', $kursus['id']) }}" class="btn btn-sm btn-info">EDIT</a>
-                            <a href="#" class="btn btn-sm btn-danger">DELETE</a>
+                            <button type="button" class="btn btn-sm btn-danger">DELETE</button>
 
                         </td>
                     </tr>
