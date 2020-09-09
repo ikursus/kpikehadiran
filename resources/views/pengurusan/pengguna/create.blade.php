@@ -33,6 +33,12 @@
                 <small id="email" class="form-text text-muted">Alamat email pengguna.</small>
             </div>
 
+            <div class="form-group">
+                <label for="telefon">Telefon</label>
+                <input type="text" class="form-control" name="telefon">
+                <small id="telefon" class="form-text text-muted">No telefon pengguna.</small>
+            </div>
+
 			<div class="form-group">
 				<label for="password">Katalaluan</label>
 				<input type="password" class="form-control" id="password" name="password">
@@ -52,9 +58,18 @@
             </div>
 
             <div class="form-group">
-                <label for="telefon">Telefon</label>
-                <input type="text" class="form-control" name="telefon">
-                <small id="telefon" class="form-text text-muted">No telefon pengguna.</small>
+                <label for="jawatan">Jawatan</label>
+                <input type="text" class="form-control" name="jawatan">
+                <small id="jawatan" class="form-text text-muted">Jawatan.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="jawatan">Status Akaun</label>
+                <select name="status" class="form-control">
+                    <option value="aktif">Aktif</option>
+                    <option value="tutup">Tutup</option>
+                </select>
+                <small id="jawatan" class="form-text text-muted">Status akaun.</small>
             </div>
 
         </div>
