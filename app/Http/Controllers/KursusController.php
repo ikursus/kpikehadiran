@@ -86,6 +86,6 @@ class KursusController extends Controller
      */
     public function destroy($id)
     {
-        return redirect('/kursus');
+        return redirect()->route('user.kursus.index');
     }
 }

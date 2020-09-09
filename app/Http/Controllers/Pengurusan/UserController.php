@@ -14,7 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $senarai_pengguna = [
+            ['id' => 1, 'nama' => 'Ahmad', 'email' => 'ahmad@gmail.com', 'bahagian' => 'IT' ],
+            ['id' => 2, 'nama' => 'Upin', 'email' => 'upin@gmail.com', 'bahagian' => 'Kewangan' ],
+            ['id' => 3, 'nama' => 'Muhammad', 'email' => 'muhammad@gmail.com', 'bahagian' => 'Pentadbiran' ]
+        ];
+
+        return view('pengurusan.pengguna.senarai', compact('senarai_pengguna'));
     }
 
     /**
@@ -24,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pengurusan.pengguna.create');
     }
 
     /**
@@ -35,7 +41,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        return $data;
     }
 
     /**
@@ -46,7 +53,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pengurusan.pengguna.show');
     }
 
     /**
@@ -57,7 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pengurusan.pengguna.edit');
     }
 
     /**
@@ -69,7 +76,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        return $data;
     }
 
     /**
@@ -80,6 +88,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect()->route('users.index');
     }
 }

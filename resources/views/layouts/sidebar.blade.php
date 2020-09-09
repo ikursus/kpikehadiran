@@ -23,16 +23,16 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Menu
+      Menu Pengguna
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile">
+        <i class="fas fa-fw fa-user"></i>
         <span>Akaun Profile</span>
       </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div id="collapseProfile" class="collapse" aria-labelledby="headingProfile" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tindakan:</h6>
           <a class="collapse-item" href="{{ route('user.profile.edit') }}">Kemaskini</a>
@@ -40,13 +40,13 @@
       </div>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
+    <!-- Nav Item - Kursus Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKursus" aria-expanded="true" aria-controls="collapseKursus">
+        <i class="fas fa-fw fa-folder-open"></i>
         <span>Kursus</span>
       </a>
-      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div id="collapseKursus" class="collapse" aria-labelledby="headingKursus" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tindakan:</h6>
           <a class="collapse-item" href="{{ route('user.kursus.index') }}">Senarai Kursus</a>
@@ -57,6 +57,26 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Menu Pengurusan
+    </div>
+
+    <!-- Nav Item - Users Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true" aria-controls="collapseUsers">
+        <i class="fas fa-users"></i>
+        <span>Pengguna</span>
+      </a>
+      <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Tindakan:</h6>
+          <a class="collapse-item" href="{{ route('users.index') }}">Senarai Pengguna</a>
+          <a class="collapse-item" href="{{ route('users.create') }}">Daftar Pengguna</a>
+        </div>
+      </div>
+    </li>
 
     <!-- Heading -->
     <div class="sidebar-heading">

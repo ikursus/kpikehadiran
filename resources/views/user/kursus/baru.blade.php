@@ -76,7 +76,8 @@
 
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary">Simpan</button>
+            <a class="btn btn-default" href="{{ route('user.kursus.index') }}">Kembali</a>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
     </div>
     </form>

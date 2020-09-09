@@ -109,7 +109,7 @@
 
         </div>
         <div class="card-footer">
-            <a class="btn btn-default" href="/dashboard">Dashboard</a>
+            <a class="btn btn-default" href="{{ route('user.dashboard') }}">Dashboard</a>
         </div>
     </div>
     </form>
