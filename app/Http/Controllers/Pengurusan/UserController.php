@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pengurusan;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class KursusController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +14,7 @@ class KursusController extends Controller
      */
     public function index()
     {
-        $senarai_kursus = [
-            ['id' => 1, 'nama' => 'Kursus PHP', 'tarikh_mula_kursus' => '2020-09-07', 'tarikh_tamat_kursus' => '2020-09-10' ],
-            ['id' => 2, 'nama' => 'Kursus Flutter', 'tarikh_mula_kursus' => '2020-09-01', 'tarikh_tamat_kursus' => '2020-09-03' ],
-            ['id' => 3, 'nama' => 'Kursus WordPress', 'tarikh_mula_kursus' => '2020-08-07', 'tarikh_tamat_kursus' => '2020-08-10' ]
-        ];
-        return view('user.kursus.senarai', compact('senarai_kursus'));
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class KursusController extends Controller
      */
     public function create()
     {
-        return view('user.kursus.baru');
+        //
     }
 
     /**
@@ -39,8 +35,7 @@ class KursusController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        return $data;
+        //
     }
 
     /**
@@ -62,7 +57,7 @@ class KursusController extends Controller
      */
     public function edit($id)
     {
-        return view('user.kursus.kemaskini');
+        //
     }
 
     /**
@@ -74,8 +69,7 @@ class KursusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        return $data;
+        //
     }
 
     /**
@@ -86,6 +80,6 @@ class KursusController extends Controller
      */
     public function destroy($id)
     {
-        return redirect('/kursus');
+        //
     }
 }

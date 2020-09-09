@@ -34,3 +34,5 @@ Route::get('/laporan', 'LaporanController@index')->name('user.laporan.index');
 
 Route::get('/profile', 'ProfileController@edit')->name('user.profile.edit');
 Route::patch('/profile', 'ProfileController@update')->name('user.profile.update');
+
+Route::resource('users', 'Pengurusan\UserController');

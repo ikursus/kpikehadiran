@@ -80,6 +80,33 @@
         </div>
         <div class="card-body">
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>KURSUS</th>
+                        <th>TARIKH MULA</th>
+                        <th>TARIKH TAMAT</th>
+                        <th>TINDAKAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($senarai_kursus as $kursus)
+                    <tr>
+                        <td>{{ $kursus['id'] }}</td>
+                        <td>{{ $kursus['nama'] }}</td>
+                        <td>{{ $kursus['tarikh_mula_kursus'] }}</td>
+                        <td>{{ $kursus['tarikh_tamat_kursus'] }}</td>
+                        <td>
+                            <a href="{{ route('user.kursus.edit', $kursus['id']) }}" class="btn btn-sm btn-info">EDIT</a>
+                            <a href="#" class="btn btn-sm btn-danger">DELETE</a>
+
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
         </div>
         <div class="card-footer">
             <a class="btn btn-default" href="/dashboard">Dashboard</a>
