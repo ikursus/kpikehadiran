@@ -1,0 +1,7 @@
+
+
+1) Download dari github https://github.com/ikursus/kpikehadiran sebagai zip
+2) extract dalam folder project
+3) rename file bernama .env.example kepada .env
+4) composer update (taip di terminal)
+5) php artisan key:generate
