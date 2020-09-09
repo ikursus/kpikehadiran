@@ -13,6 +13,12 @@
     <div class="col-md-12">
 
     <form method="POST" action="">
+        
+        @csrf
+
+        <input type="hidden" name="_method" value="PATCH">
+
+        @method('PATCH')
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -46,13 +52,13 @@
 
             <div class="form-group">
                 <label for="bahagian">Bahagian</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="bahagian">
                 <small id="bahagian" class="form-text text-muted">Bahagian/Unit.</small>
             </div>
 
             <div class="form-group">
                 <label for="telefon">Telefon</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="telefon">
                 <small id="telefon" class="form-text text-muted">No telefon anda.</small>
             </div>
 

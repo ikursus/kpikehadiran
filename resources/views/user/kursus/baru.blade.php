@@ -13,6 +13,12 @@
     <div class="col-md-12">
 
     <form method="POST" action="">
+    
+    @csrf
+
+    {{ csrf_field() }}
+
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -27,28 +33,41 @@
             </div>
 
             <div class="form-group">
-                <label for="bahagian">Lokasi Kursus</label>
-                <input type="text" class="form-control">
-                <small id="bahagian" class="form-text text-muted">Lokasi/Tempat kursus dijalankan.</small>
+                <label for="lokasi">Lokasi Kursus</label>
+                <input type="text" class="form-control" name="lokasi">
+                <small id="lokasi" class="form-text text-muted">Lokasi/Tempat kursus dijalankan.</small>
             </div>
 
-			<div class="form-group">
-				<label for="hari">Jumlah Hari</label>
-				<input type="number" class="form-control" id="hari" name="hari">
-                <small id="hari" class="form-text text-muted">Jumlah bilangan hari penyertaan kursus.</small>
-			</div>
+            <div class="row">
+                <div class="col-md-4">
 
-            <div class="form-group">
-				<label for="tarikh_mula_kursus">Tarikh Mula Kursus</label>
-				<input type="date" class="form-control" id="tarikh_mula_kursus" name="tarikh_mula_kursus">
-                <small id="tarikh_mula_kursus" class="form-text text-muted">Tarikh kursus bermula.</small>
+                    <div class="form-group">
+                        <label for="tarikh_mula_kursus">Tarikh Mula Kursus</label>
+                        <input type="date" class="form-control" id="tarikh_mula_kursus" name="tarikh_mula_kursus">
+                        <small id="tarikh_mula_kursus" class="form-text text-muted">Tarikh kursus bermula.</small>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="tarikh_tamat_kursus">Tarikh Tamat Kursus</label>
+                        <input type="date" class="form-control" id="tarikh_tamat_kursus" name="tarikh_tamat_kursus">
+                        <small id="tarikh_tamat_kursus" class="form-text text-muted">Tarikh kursus berakhir.</small>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="hari">Jumlah Hari</label>
+                        <input type="number" class="form-control" id="hari" name="hari">
+                        <small id="hari" class="form-text text-muted">Jumlah bilangan hari penyertaan kursus.</small>
+                    </div>
+            
+                </div>
             </div>
 
-            <div class="form-group">
-				<label for="tarikh_tamat_kursus">Tarikh Tamat Kursus</label>
-				<input type="date" class="form-control" id="tarikh_tamat_kursus" name="tarikh_tamat_kursus">
-                <small id="tarikh_tamat_kursus" class="form-text text-muted">Tarikh kursus berakhir.</small>
-			</div>
             <div class="form-group">
                 <label for="nota">Nota</label>
                 <textarea name="nota" class="form-control"></textarea>
