@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Pengurusan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\DB;
+use DB;
 
 class UserController extends Controller
 {
@@ -14,11 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $senarai_pengguna = [
-            ['id' => 1, 'nama' => 'Ahmad', 'email' => 'ahmad@gmail.com', 'bahagian' => 'IT' ],
-            ['id' => 2, 'nama' => 'Upin', 'email' => 'upin@gmail.com', 'bahagian' => 'Kewangan' ],
-            ['id' => 3, 'nama' => 'Muhammad', 'email' => 'muhammad@gmail.com', 'bahagian' => 'Pentadbiran' ]
-        ];
+        $senarai_pengguna = DB::table('users')->paginate(2);
 
         return view('pengurusan.pengguna.senarai', compact('senarai_pengguna'));
     }

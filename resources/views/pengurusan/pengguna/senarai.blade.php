@@ -33,18 +33,19 @@
                 <tbody>
                     @foreach($senarai_pengguna as $pengguna)
                     <tr>
-                        <td>{{ $pengguna['id'] }}</td>
-                        <td>{{ $pengguna['nama'] }}</td>
-                        <td>{{ $pengguna['email'] }}</td>
+                        <td>{{ $pengguna->id }}</td>
+                        <td>{{ $pengguna->nama }}</td>
+                        <td>{{ $pengguna->email }}</td>
                         <td>
-                            <a href="{{ route('users.edit', $pengguna['id']) }}" class="btn btn-sm btn-info">EDIT</a>
+                            <a href="{{ route('users.edit', $pengguna->id) }}" class="btn btn-sm btn-info">EDIT</a>
                             <button type="button" class="btn btn-sm btn-danger">DELETE</button>
-
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+
+            {{ $senarai_pengguna->links() }}
 
         </div>
         <div class="card-footer">

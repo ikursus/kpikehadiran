@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'DashboardController@index')->name('user.dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('user.dashboard')->middleware('auth');
 
 Route::get('/kursus', 'KursusController@index')->name('user.kursus.index');
 Route::get('/kursus/baru', 'KursusController@create')->name('user.kursus.create');
