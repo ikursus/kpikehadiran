@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="/dashboard">
+      <a class="nav-link" href="{{ route('user.dashboard') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -35,7 +35,7 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tindakan:</h6>
-          <a class="collapse-item" href="/profile">Kemaskini</a>
+          <a class="collapse-item" href="{{ route('user.profile.edit') }}">Kemaskini</a>
         </div>
       </div>
     </li>
@@ -49,8 +49,8 @@
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tindakan:</h6>
-          <a class="collapse-item" href="/kursus">Senarai Kursus</a>
-          <a class="collapse-item" href="/kursus/baru">Daftar Kursus</a>
+          <a class="collapse-item" href="{{ route('user.kursus.index') }}">Senarai Kursus</a>
+          <a class="collapse-item" href="{{ route('user.kursus.create') }}">Daftar Kursus</a>
         </div>
       </div>
     </li>

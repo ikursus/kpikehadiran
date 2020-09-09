@@ -19,18 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index')->name('user.dashboard');
 
-Route::get('/kursus', 'KursusController@index');
-Route::get('/kursus/baru', 'KursusController@create');
-Route::post('/kursus/baru', 'KursusController@store');
-Route::get('/kursus/{id}/kemaskini', 'KursusController@edit');
-Route::patch('/kursus/{id}/kemaskini', 'KursusController@update');
-Route::delete('/kursus/{id}', 'KursusController@destroy');
+Route::get('/kursus', 'KursusController@index')->name('user.kursus.index');
+Route::get('/kursus/baru', 'KursusController@create')->name('user.kursus.create');
+Route::post('/kursus/baru', 'KursusController@store')->name('user.kursus.store');
+Route::get('/kursus/{id}/kemaskini', 'KursusController@edit')->name('user.kursus.edit');
+Route::patch('/kursus/{id}/kemaskini', 'KursusController@update')->name('user.kursus.update');
+Route::delete('/kursus/{id}', 'KursusController@destroy')->name('user.kursus.destroy');
 
 // Route::resource('kursus', 'KursusController');
 
-Route::get('/laporan', 'LaporanController@index');
+Route::get('/laporan', 'LaporanController@index')->name('user.laporan.index');
 
-Route::get('/profile', 'ProfileController@edit');
-Route::patch('/profile', 'ProfileController@update');
+Route::get('/profile', 'ProfileController@edit')->name('user.profile.edit');
+Route::patch('/profile', 'ProfileController@update')->name('user.profile.update');
