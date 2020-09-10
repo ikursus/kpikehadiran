@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\DB;
 use DB;
+use App\User;
 
 class UserController extends Controller
 {
@@ -23,8 +24,12 @@ class UserController extends Controller
         
         $total = $request->input('total') ?? 3;
 
-        $senarai_pengguna = DB::table('users')
-        ->orderBy('id', 'desc')
+        // $senarai_pengguna = DB::table('users')
+        // ->orderBy('id', 'desc')
+        // ->select('id', 'nama', 'email')
+        // ->paginate($total);
+
+        $senarai_pengguna = User::orderBy('id', 'desc')
         ->select('id', 'nama', 'email')
         ->paginate($total);
 

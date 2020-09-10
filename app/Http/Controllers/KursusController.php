@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kursus;
 
 class KursusController extends Controller
 {
@@ -13,11 +14,8 @@ class KursusController extends Controller
      */
     public function index()
     {
-        $senarai_kursus = [
-            ['id' => 1, 'nama' => 'Kursus PHP', 'tarikh_mula_kursus' => '2020-09-07', 'tarikh_tamat_kursus' => '2020-09-10' ],
-            ['id' => 2, 'nama' => 'Kursus Flutter', 'tarikh_mula_kursus' => '2020-09-01', 'tarikh_tamat_kursus' => '2020-09-03' ],
-            ['id' => 3, 'nama' => 'Kursus WordPress', 'tarikh_mula_kursus' => '2020-08-07', 'tarikh_tamat_kursus' => '2020-08-10' ]
-        ];
+        $senarai_kursus = Kursus::all();
+
         return view('user.kursus.senarai', compact('senarai_kursus'));
     }
 
@@ -39,8 +37,16 @@ class KursusController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required'
+        ]);
+
         $data = $request->all();
-        return $data;
+        $data['user_id'] = auth()->user()->id ?? null;
+
+        Kursus::create($data);
+
+        return redirect()->route('user.kursus.index');
     }
 
     /**
@@ -51,7 +57,9 @@ class KursusController extends Controller
      */
     public function show($id)
     {
-        //
+        
+
+
     }
 
     /**
@@ -62,7 +70,9 @@ class KursusController extends Controller
      */
     public function edit($id)
     {
-        return view('user.kursus.kemaskini');
+        $kursus = Kursus::find($id);
+
+        return view('user.kursus.edit', compact('kursus'));
     }
 
     /**
@@ -74,8 +84,16 @@ class KursusController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama' => 'required'
+        ]);
+
         $data = $request->all();
-        return $data;
+
+        $kursus = Kursus::find($id);
+        $kursus->update($data);
+
+        return redirect()->route('user.kursus.index');
     }
 
     /**
@@ -86,6 +104,9 @@ class KursusController extends Controller
      */
     public function destroy($id)
     {
+        $kursus = Kursus::find($id);
+        $kursus->delete();
+
         return redirect()->route('user.kursus.index');
     }
 }

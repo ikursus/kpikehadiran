@@ -72,8 +72,6 @@
     <!-- Content Col -->
     <div class="col-md-12">
 
-    <form method="POST" action="">
-
     <div class="card shadow mb-4">
         <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Senarai Rekod Pendaftaran Kursus</h6>
@@ -93,13 +91,49 @@
                 <tbody>
                     @foreach($senarai_kursus as $kursus)
                     <tr>
-                        <td>{{ $kursus['id'] }}</td>
+                        <td>{{ $kursus->id }}</td>
                         <td>{{ $kursus['nama'] }}</td>
-                        <td>{{ $kursus['tarikh_mula_kursus'] }}</td>
-                        <td>{{ $kursus['tarikh_tamat_kursus'] }}</td>
+                        <td>{{ $kursus['tarikh_mula'] }}</td>
+                        <td>{{ $kursus['tarikh_tamat'] }}</td>
                         <td>
                             <a href="{{ route('user.kursus.edit', $kursus['id']) }}" class="btn btn-sm btn-info">EDIT</a>
-                            <button type="button" class="btn btn-sm btn-danger">DELETE</button>
+                            
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $kursus->id }}">
+                                DELETE
+                            </button>
+                            
+
+                                <div class="modal fade" id="modal-delete-{{ $kursus->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        
+                                    <!-- Modal -->
+                                    <form method="POST" action="{{ route('user.kursus.destroy', $kursus->id) }}">
+                                        
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Pengesahan Delete</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <p>Adakah anda bersetuju untuk menghapuskan data {{ $kursus->nama }}</p>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-danger">Confirm</button>
+                                            </div>
+                                        </div>
+                                            
+                                    </form>
+
+                                    </div>
+                                </div>
 
                         </td>
                     </tr>
@@ -112,7 +146,6 @@
             <a class="btn btn-default" href="{{ route('user.dashboard') }}">Dashboard</a>
         </div>
     </div>
-    </form>
 
     </div><!-- End Content Col -->
 </div><!-- End Content Row-->
