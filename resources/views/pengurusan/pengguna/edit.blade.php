@@ -23,6 +23,8 @@
         </div>
         <div class="card-body">
 
+            @include('layouts.alerts')
+
             <div class="form-group">
                 <label for="nama">Nama</label>
                 <input type="text" class="form-control" name="nama" value="{{ $pengguna->nama }}">

@@ -35,4 +35,11 @@ Route::get('/laporan', 'LaporanController@index')->name('user.laporan.index');
 Route::get('/profile', 'ProfileController@edit')->name('user.profile.edit');
 Route::patch('/profile', 'ProfileController@update')->name('user.profile.update');
 
-Route::resource('users', 'Pengurusan\UserController');
+// Route::resource('users', 'Pengurusan\UserController');
+
+Route::get('/users', 'Pengurusan\UserController@index')->name('users.index');
+Route::get('/users/create', 'Pengurusan\UserController@create')->name('users.create');
+Route::post('/users/create', 'Pengurusan\UserController@store')->name('users.store');
+Route::get('/users/{id}/edit', 'Pengurusan\UserController@edit')->name('users.edit');
+Route::patch('/users/{id}', 'Pengurusan\UserController@update')->name('users.update');
+Route::delete('/users/{id}', 'Pengurusan\UserController@destroy')->name('users.destroy');

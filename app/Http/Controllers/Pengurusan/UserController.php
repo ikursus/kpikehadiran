@@ -21,7 +21,7 @@ class UserController extends Controller
         
         //$sql = "SELECT * FROM users WHERE name="john" AND email="john@gmail.com" LIMIT 1"
         
-        $total = $request->input('total') ?? 2;
+        $total = $request->input('total') ?? 3;
 
         $senarai_pengguna = DB::table('users')
         ->orderBy('id', 'desc')
@@ -57,15 +57,32 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        //Validate data dari borang
         $request->validate([
-            //'nama' => ['required', 'min:3']
-            'nama' => 'required|min:3',
-            'password' => ['required', 'min:5', 'confirmed']
+            'nama' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:3|confirmed',
+            'jawatan' => 'required',
+            'bahagian' => 'required',
+            'status' => ['required', 'in:aktif,tutup'],
         ]);
 
+        // Dapatkan data daripada borang untuk disimpan ke dalam DB
+        // $data = $request->all();
+        $data = $request->only([
+            'nama',
+            'email',
+            'jawatan',
+            'bahagian',
+            'status',
+            'telefon'
+        ]);
 
-        $data = $request->all();
-        return $data;
+        $data['password'] = bcrypt($request->input('password'));
+
+        DB::table('users')->insert($data);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -109,8 +126,43 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        return $data;
+        //Validate data dari borang
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'jawatan' => 'required',
+            'bahagian' => 'required',
+            'status' => ['required', 'in:aktif,tutup'],
+        ]);
+
+        // Dapatkan data daripada borang untuk disimpan ke dalam DB
+        // $data = $request->all();
+        $data = $request->only([
+            'nama',
+            'email',
+            'jawatan',
+            'bahagian',
+            'status',
+            'telefon'
+        ]);
+
+        // Sekiranya ruangan password TIDAK kosong, baru dapatkan password
+        // dan dimasukka ke dalam data untuk disimpan ke dalam table users
+        if ( !is_null($request->input('password')) )
+        {
+            // Validate data password supaya disahkan (confirm)
+            $request->validate([
+                'password' => 'confirmed'
+            ]);
+            // Ecnrypt password dan masukkan ke variable $data
+            $data['password'] = bcrypt($request->input('password'));
+        }
+
+        // Simpan data ke dalam database
+        DB::table('users')->where('id', $id)->update($data);
+
+        // Redirect ke halaman senarai pengguna
+        return redirect()->route('users.index');
     }
 
     /**
@@ -121,6 +173,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        // Cari data dari table users dan hapuskan data tersebut
+        DB::table('users')->where('id', '=', $id)->delete();
+
         return redirect()->route('users.index');
     }
 }
