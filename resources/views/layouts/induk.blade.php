@@ -17,7 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('/themes/sb-admin-2') }}/css/sb-admin-2.min.css" rel="stylesheet">
-
+  
+  @yield('custom_css')
 </head>
 
 <body id="page-top">
@@ -100,15 +101,7 @@
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('/themes/sb-admin-2') }}/js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="{{ asset('/themes/sb-admin-2') }}/vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{ asset('/themes/sb-admin-2') }}/js/demo/chart-area-demo.js"></script>
-  <script src="{{ asset('/themes/sb-admin-2') }}/js/demo/chart-pie-demo.js"></script>
-
-
-  @yield('script_saya')
+  @yield('custom_js')
 </body>
 
 </html>

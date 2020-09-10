@@ -25,6 +25,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('user.dashboard')->m
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/kursus', 'KursusController@index')->name('user.kursus.index');
+    Route::get('/kursus/reminder', 'KursusController@reminder')->name('user.kursus.reminder');
     Route::get('/kursus/baru', 'KursusController@create')->name('user.kursus.create');
     Route::post('/kursus/baru', 'KursusController@store')->name('user.kursus.store');
     Route::get('/kursus/{id}/kemaskini', 'KursusController@edit')->name('user.kursus.edit');
@@ -38,7 +39,13 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ProfileController@edit')->name('user.profile.edit');
     Route::patch('/profile', 'ProfileController@update')->name('user.profile.update');
 
-    Route::resource('users', 'Pengurusan\UserController');
+    Route::group(['middleware' => ['role:admin']], function() {
+
+        Route::post('users/datatables', 'Pengurusan\UserController@datatables')->name('users.datatables');
+        Route::resource('users', 'Pengurusan\UserController')->except('show');
+
+    });
+    
 
 });
 

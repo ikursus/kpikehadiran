@@ -64,6 +64,7 @@
     </div>
 
     <!-- Nav Item - Users Collapse Menu -->
+    @if (auth()->user()->hasRole('admin'))
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true" aria-controls="collapseUsers">
         <i class="fas fa-users"></i>
@@ -77,6 +78,7 @@
         </div>
       </div>
     </li>
+    @endif
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -88,9 +90,14 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-      <a class="nav-link" href="/logout">
+      <a class="nav-link" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <i class="fas fa-fw fa-sign-out-alt"></i>
-        <span>Log Out</span></a>
+        <span>Log Out</span>
+      </a>
+
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
     </li>
 
     <!-- Divider -->

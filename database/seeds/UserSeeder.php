@@ -44,5 +44,10 @@ class UserSeeder extends Seeder
             'telefon' => '0123456789',
             'status' => 'aktif'
         ]);
+
+        // Assign Role
+        $pengguna1->assignRole('admin');
+        $pengguna2->assignRole('pengguna');
+        $pengguna3->assignRole('pengguna');
     }
 }

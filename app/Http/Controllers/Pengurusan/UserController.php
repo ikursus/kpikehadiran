@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\DB;
 use DB;
 use App\User;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -22,39 +23,56 @@ class UserController extends Controller
         // $this->middleware('auth')->only(['create', 'edit']);
     }
 
+    public function datatables()
+    {
+        $query = User::query()->where('status', 'aktif');
+
+        return DataTables::of($query)
+        ->addColumn('tindakan', function ($pengguna) {
+            return view('pengurusan.pengguna.tindakan', compact('pengguna'));
+        })
+        ->make(true);
+    }
+
+    // Ganti public function index lama kepada penggunaan datatables
+    public function index()
+    {
+        return view('pengurusan.pengguna.senarai');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        // $senarai_pengguna = DB::table('users')->get();
-        //$senarai_pengguna = DB::table('users')->paginate(2);
+    // public function index(Request $request)
+    // {
+    //     // $senarai_pengguna = DB::table('users')->get();
+    //     //$senarai_pengguna = DB::table('users')->paginate(2);
         
-        //$sql = "SELECT * FROM users WHERE name="john" AND email="john@gmail.com" LIMIT 1"
+    //     //$sql = "SELECT * FROM users WHERE name="john" AND email="john@gmail.com" LIMIT 1"
         
-        $total = $request->input('total') ?? 3;
+    //     $total = $request->input('total') ?? 3;
 
-        // $senarai_pengguna = DB::table('users')
-        // ->orderBy('id', 'desc')
-        // ->select('id', 'nama', 'email')
-        // ->paginate($total);
+    //     // $senarai_pengguna = DB::table('users')
+    //     // ->orderBy('id', 'desc')
+    //     // ->select('id', 'nama', 'email')
+    //     // ->paginate($total);
 
-        $senarai_pengguna = User::orderBy('id', 'desc')
-        ->select('id', 'nama', 'email')
-        ->paginate($total);
+    //     $senarai_pengguna = User::orderBy('id', 'desc')
+    //     ->select('id', 'nama', 'email')
+    //     ->paginate($total);
 
-        // Cara dapatkan single data
-        // $senarai_pengguna = DB::table('users')
-        // ->orderBy('id', 'desc')
-        // ->where('nama', '=', 'ahmad')
-        //->whereDate('created_at', '>=', '2020-07-01')
-        // ->select('id', 'nama', 'email')
-        // ->first();
+    //     // Cara dapatkan single data
+    //     // $senarai_pengguna = DB::table('users')
+    //     // ->orderBy('id', 'desc')
+    //     // ->where('nama', '=', 'ahmad')
+    //     //->whereDate('created_at', '>=', '2020-07-01')
+    //     // ->select('id', 'nama', 'email')
+    //     // ->first();
 
-        return view('pengurusan.pengguna.senarai', compact('senarai_pengguna'));
-    }
+    //     return view('pengurusan.pengguna.senarai', compact('senarai_pengguna'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -108,10 +126,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        return view('pengurusan.pengguna.show');
-    }
+    // public function show($id)
+    // {
+    //     return view('pengurusan.pengguna.show');
+    // }
 
     /**
      * Show the form for editing the specified resource.

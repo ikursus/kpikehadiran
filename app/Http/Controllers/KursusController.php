@@ -4,9 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kursus;
+use App\User;
+
+use App\Notifications\KpiReminder;
 
 class KursusController extends Controller
 {
+    // Function untuk hantar notifikasi KPI belum capai
+    public function reminder()
+    {
+        // Dapatkan senarai users
+        $senarai_users = User::all();
+        $email_subject = 'Reminder KPI kehadiran kursus belum capai.';
+
+        foreach ($senarai_users as $user)
+        {
+            // Semak user yang belum mencapai KPI dan hantar email
+            if ($user->kursus()->sum('jumlah_hari') < config('kpikehadiran.tetapan.kpi'))
+            {
+                
+                $user->notify(new KpiReminder($user, $email_subject));
+            }
+
+            //return $user->kursus()->sum('jumlah_hari');
+        }
+
+        return redirect()->route('users.index')->with('alert_mesej', 'Reminder telah diproses');
+    }
     /**
      * Display a listing of the resource.
      *
