@@ -42,12 +42,17 @@
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $pengguna->id }}">
                                 DELETE
-                                </button>{{ route('users.destroy', $pengguna->id) }}
+                            </button>
+                            
+
+                                <div class="modal fade" id="modal-delete-{{ $pengguna->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        
+                            <!-- Modal -->
                             <form method="POST" action="{{ route('users.destroy', $pengguna->id) }}">
                                 
                                 @csrf
                                 @method('DELETE')
-                                
                                     <div class="modal-content">
                                         <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Pengesahan Delete</h5>
@@ -67,13 +72,6 @@
                                     </div>
                                     
                             </form>
-                            
-
-                                <div class="modal fade" id="modal-delete-{{ $pengguna->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        
-                            <!-- Modal -->
-                            
                                     </div>
                                 </div>
 
@@ -83,7 +81,7 @@
                 </tbody>
             </table>
 
-            {{-- {{ $senarai_pengguna->appends(['total' => request('total')])->links() }} --}}
+            {{ $senarai_pengguna->appends(['total' => request('total')])->links() }}
 
         </div>
         <div class="card-footer">
