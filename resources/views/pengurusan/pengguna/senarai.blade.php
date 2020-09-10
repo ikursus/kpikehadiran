@@ -13,14 +13,13 @@
     <!-- Content Col -->
     <div class="col-md-12">
 
-    <form method="POST" action="">
-
     <div class="card shadow mb-4">
         <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Senarai Pengguna Sistem</h6>
         </div>
         <div class="card-body">
 
+            @if (!is_null($senarai_pengguna))
             <table class="table">
                 <thead>
                     <tr>
@@ -48,30 +47,31 @@
                                 <div class="modal fade" id="modal-delete-{{ $pengguna->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         
-                            <!-- Modal -->
-                            <form method="POST" action="{{ route('users.destroy', $pengguna->id) }}">
-                                
-                                @csrf
-                                @method('DELETE')
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Pengesahan Delete</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        </div>
-                                        <div class="modal-body">
+                                    <!-- Modal -->
+                                    <form method="POST" action="{{ route('users.destroy', $pengguna->id) }}">
+                                        
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Pengesahan Delete</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
 
-                                            <p>Adakah anda bersetuju untuk menghapuskan data {{ $pengguna->nama }}</p>
+                                                <p>Adakah anda bersetuju untuk menghapuskan data {{ $pengguna->nama }}</p>
 
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-danger">Confirm</button>
+                                            </div>
                                         </div>
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger">Confirm</button>
-                                        </div>
-                                    </div>
-                                    
-                            </form>
+                                            
+                                    </form>
+
                                     </div>
                                 </div>
 
@@ -82,6 +82,7 @@
             </table>
 
             {{ $senarai_pengguna->appends(['total' => request('total')])->links() }}
+            @endif         
 
         </div>
         <div class="card-footer">
@@ -89,7 +90,6 @@
             <a class="btn btn-primary" href="{{ route('users.create') }}">Tambah Pengguna</a>
         </div>
     </div>
-    </form>
 
     </div><!-- End Content Col -->
 </div><!-- End Content Row-->
