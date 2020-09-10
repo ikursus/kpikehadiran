@@ -12,7 +12,7 @@
     <!-- Content Col -->
     <div class="col-md-12">
 
-    <form method="POST" action="{{ route('users.update') }}">
+    <form method="POST" action="{{ route('users.update', $pengguna->id) }}">
         
         @csrf
         @method('PATCH')
@@ -25,19 +25,19 @@
 
             <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control" name="nama">
+                <input type="text" class="form-control" name="nama" value="{{ $pengguna->nama }}">
                 <small id="nama" class="form-text text-muted">Nama pengguna.</small>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" value="{{ $pengguna->email }}">
                 <small id="email" class="form-text text-muted">Alamat email pengguna.</small>
             </div>
 
             <div class="form-group">
                 <label for="telefon">Telefon</label>
-                <input type="text" class="form-control" name="telefon">
+                <input type="text" class="form-control" name="telefon" value="{{ $pengguna->telefon }}">
                 <small id="telefon" class="form-text text-muted">No telefon pengguna.</small>
             </div>
 
@@ -55,21 +55,21 @@
 
             <div class="form-group">
                 <label for="bahagian">Bahagian</label>
-                <input type="text" class="form-control" name="bahagian">
+                <input type="text" class="form-control" name="bahagian" value="{{ $pengguna->bahagian }}">
                 <small id="bahagian" class="form-text text-muted">Bahagian/Unit.</small>
             </div>
 
             <div class="form-group">
                 <label for="jawatan">Jawatan</label>
-                <input type="text" class="form-control" name="jawatan">
+                <input type="text" class="form-control" name="jawatan" value="{{ $pengguna->jawatan }}">
                 <small id="jawatan" class="form-text text-muted">Jawatan.</small>
             </div>
 
             <div class="form-group">
                 <label for="jawatan">Status Akaun</label>
                 <select name="status" class="form-control">
-                    <option value="aktif">Aktif</option>
-                    <option value="tutup">Tutup</option>
+                    <option value="aktif" {{ $pengguna->status == 'aktif' ? 'selected="selected"' : null }}>Aktif</option>
+                    <option value="tutup" {{ $pengguna->status == 'tutup' ? 'selected="selected"' : null }}>Tutup</option>
                 </select>
                 <small id="jawatan" class="form-text text-muted">Status akaun.</small>
             </div>

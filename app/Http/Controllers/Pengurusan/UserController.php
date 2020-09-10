@@ -14,9 +14,27 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $senarai_pengguna = DB::table('users')->paginate(2);
+        // $senarai_pengguna = DB::table('users')->get();
+        //$senarai_pengguna = DB::table('users')->paginate(2);
+        
+        //$sql = "SELECT * FROM users WHERE name="john" AND email="john@gmail.com" LIMIT 1"
+        
+        $total = $request->input('total') ?? 2;
+
+        $senarai_pengguna = DB::table('users')
+        ->orderBy('id', 'desc')
+        ->select('id', 'nama', 'email')
+        ->paginate($total);
+
+        // Cara dapatkan single data
+        // $senarai_pengguna = DB::table('users')
+        // ->orderBy('id', 'desc')
+        // ->where('nama', '=', 'ahmad')
+        //->whereDate('created_at', '>=', '2020-07-01')
+        // ->select('id', 'nama', 'email')
+        // ->first();
 
         return view('pengurusan.pengguna.senarai', compact('senarai_pengguna'));
     }
@@ -69,7 +87,17 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('pengurusan.pengguna.edit');
+        // Dapatkan rekod user berdasarkan $id daripada table users
+        $pengguna = DB::table('users')
+        ->where('id', '=', $id)
+        ->first();
+
+        if(is_null($pengguna))
+        {
+            return redirect()->route('users.index');
+        }
+
+        return view('pengurusan.pengguna.edit', compact('pengguna'));
     }
 
     /**
