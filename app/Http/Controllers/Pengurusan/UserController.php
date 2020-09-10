@@ -11,6 +11,18 @@ use App\User;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Protect UserController dengan authentication
+        // untuk method/function create dan edit saja
+        // $this->middleware('auth')->only(['create', 'edit']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

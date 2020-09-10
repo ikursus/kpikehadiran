@@ -17,4 +17,9 @@ class Kursus extends Model
         'jumlah_hari',
         'nota'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
 }
